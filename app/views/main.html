@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h1>Allo!</h1>
+  <h2>{{main.h2}}</h2>
+  <label>{{main.frase}}</label>
+  <label>{{main.frase2}}</label>
+</div>
+  <form>
+
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <label>texto</label>
+      <input type="text" class="form-control" ng-model="main.tt.teste" placeholder="texto">
+    </div>
+
+    <div class="form-group col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+      <label>grupo</label>
+      <select ng-model="main.tt.gr" ng-change="main.setCat()" class="form-control">
+        <option value="g1">g1</option>
+        <option value="g2">g2</option>
+        <option value="g3">g3</option>
+      </select>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button ng-click="main.enviar()" class="btn btn-default ">Submit</button>
+    </div>
+  </form>
