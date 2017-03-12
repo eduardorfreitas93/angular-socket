@@ -16,9 +16,8 @@
  */
 
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var server = require('http').createServer();
+var io = require('socket.io')(server);
 
 /* Set namespace para a conexão */
 var chat = io.of('/chat');
@@ -50,4 +49,4 @@ grupo.on('connection', function (socket) {
 
 });
 
-http.listen(3000);
+server.listen(3000);
