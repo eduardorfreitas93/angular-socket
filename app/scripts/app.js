@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'btford.socket-io'
+    'btford.socket-io',
+    'oc.lazyLoad'
   ])
   .config(function ($routeProvider, $locationProvider) {
 
@@ -24,12 +25,25 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+          loadMainCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load([
+              'scripts/controllers/main.js',
+              'scripts/services/socket.js'
+            ]);
+          }]
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        resolve: {
+          loadAboutCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('scripts/controllers/about.js');
+          }]
+        }
       })
       .otherwise({
         redirectTo: '/'

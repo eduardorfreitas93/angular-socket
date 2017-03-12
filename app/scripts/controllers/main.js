@@ -30,7 +30,7 @@ angular.module('appsockApp')
     main.enviar = function () {
       grupo.emit('sck:teste', main.tt);
     };
-    
+
     main.setCat = function () {
       grupo.emit('setCat', main.tt.gr);
     };
